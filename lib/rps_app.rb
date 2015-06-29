@@ -13,15 +13,21 @@ class RSP < Sinatra::Base
   end
 
   get '/start' do
+    erb :start
+  end
+
+  post '/start' do
     @name = params[:name]
     session[:name] = @name
-    redirect "/error" if @name == ""
+    if @name == ""
+      redirect "/error"
+    end
     erb :start
   end
 
   get '/error' do
-    @name = params[:name]
-    redirect "/error" if @name == ""
+    # @name = params[:name]
+    # redirect "/error" if @name == ""
     erb :error
   end
 
@@ -33,27 +39,20 @@ class RSP < Sinatra::Base
   post '/new_game' do
     player = Player.new
     $game = Game.new player
-    @player_choice = params[:choice].to_s
+    player_choice = params[:choice].to_s
     @computer_choice = $game.computer_choice
-    begin
-      if :choice && :choice != ""
-        @result = $game.result(player.select(:choice))
-        if $game.player.win?
-          redirect '/win'
-        # elsif $game.player.draw?
-        #   redirect '/draw'
-        # else
-        #   redirect '/lost'
-        end
-      else
-        erb :new_game
-        # @error = 'You have not made a valid selection'
-      end
-    rescue RuntimeError => @error
+    @result = $game.result player.select(@player_choice)
+    # begin
+    #   if @player_choice
+    #     @result = $game.result(player.select(@player_choice))
+    #   else
+    #     erb :new_game
+    #     # @error = 'You have not made a valid selection'
+    #   end
+    # rescue RuntimeError => @error
+    #   # redirect '/error'
+    # end
 
-    end
-
-    erb :new_game
   end
 
   # start the server if ruby file executed directly

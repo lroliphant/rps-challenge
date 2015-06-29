@@ -1,4 +1,4 @@
-# require_relative 'game'
+require_relative 'game'
 
 class Player
 
@@ -11,6 +11,7 @@ class Player
   end
 
   def select(choice)
+    @selected = ""
     case choice
     when "rock"
       self.selected = "rock"
@@ -21,7 +22,7 @@ class Player
     else
       raise "You have not made a valid selection"
     end
-      selected
+      self.selected
   end
 
 end

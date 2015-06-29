@@ -6,7 +6,6 @@ feature 'Start a new game' do
     visit '/'
     expect(page).to have_content "Welcome to Rock, Paper, Scissors!"
     click_button('Start')
-    visit '/start'
     expect(page).to have_content "Please enter your name:"
   end
 
@@ -21,7 +20,6 @@ feature 'Start a new game' do
     visit '/start'
     fill_in('name', with: '')
     click_button('Submit')
-    visit '/error'
     expect(page).to have_content "* please fill in your name"
   end
 
@@ -31,7 +29,6 @@ feature 'Start a new game' do
     click_button('Submit')
     expect(page).to have_content "Hello Basil, rules for the game are as follows:"
     click_button('Start')
-    visit '/new_game'
     expect(page).to have_content "Please choose from one of the following options:"
   end
 
@@ -46,11 +43,10 @@ feature 'Playing game' do
    $game = nil
   end
 
-  scenario 'I can select rock button' do
+  scenario 'can select rock button' do
     visit '/new_game'
     allow($game).to receive(:computer_choice).and_return "scissors"
     click_button('rock')
-    visit '/win'
     expect(page).to have_content "You win!"
   end
 

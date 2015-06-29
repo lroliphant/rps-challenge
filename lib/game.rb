@@ -9,12 +9,13 @@ class Game
     @selection = ["rock", "paper", "scissors" ]
   end
 
+
   def computer_choice
     selection[rand(3)]
   end
 
   def result player
-    fail 'Please choose one of the options: rock, scissors or paper' if player.choice == ""
+    # fail 'Please choose one of the options: rock, scissors or paper' if player.select == ""
     if win? player
       "You win!"
     elsif draw? player
@@ -26,13 +27,13 @@ class Game
 
   def win? player
     # TODO refactor opportunity here - christ knows how though
-    player.choice == 'rock' && computer_choice == 'scissors' ||
-    player.choice == 'scissors' && computer_choice == 'paper' ||
-    player.choice == 'paper' && computer_choice == 'rock'
+    player.select == 'rock' && computer_choice == 'scissors' ||
+    player.select == 'scissors' && computer_choice == 'paper' ||
+    player.select == 'paper' && computer_choice == 'rock'
   end
 
   def draw? player
-    player.choice == computer_choice
+    player.select == computer_choice
   end
 
 end
