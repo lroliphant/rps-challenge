@@ -1,6 +1,6 @@
 require 'sinatra/base'
-require_relative 'game'
-require_relative 'player'
+require './lib/game'
+require './lib/player'
 
 class RSP < Sinatra::Base
   enable :sessions, :static
@@ -34,19 +34,19 @@ class RSP < Sinatra::Base
   post '/new_game' do
     player = Player.new
     $game = Game.new player
-    player_choice = params[:choice].to_s
-    @computer_choice = $game.computer_choice
-    @result = $game.result player.select(@player_choice)
-    # begin
-    #   if @player_choice
-    #     @result = $game.result(player.select(@player_choice))
-    #   else
-    #     erb :new_game
-    #     # @error = 'You have not made a valid selection'
-    #   end
-    # rescue RuntimeError => @error
-    #   # redirect '/error'
-    # end
+    choice = params[:choice].to_s
+    random_choice = $game.computer_choice
+    # @result = $game.result player.select(@player_choice)
+    begin
+      if choice
+        @result = $game.result(player.select(choice))
+      else
+        # erb :new_game
+        @error = 'You have not made a valid selection'
+      end
+    rescue RuntimeError => @error
+      # redirect '/error'
+    end
 
   end
 

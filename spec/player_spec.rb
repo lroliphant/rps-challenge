@@ -4,13 +4,13 @@ describe Player do
 
   subject(:player) { Player.new }
 
-  it 'has options when created' do
-    expect(player.selection).not_to be_empty
-  end
-
-  it 'has 3 options to choose from' do
-    expect(player.selection).to eq ["rock", "paper", "scissors" ]
-  end
+  # it 'has options when created' do
+  #   expect(player.selection).not_to be_empty
+  # end
+  #
+  # it 'has 3 options to choose from' do
+  #   expect(player.selection).to eq ["rock", "paper", "scissors" ]
+  # end
 
   it { is_expected.to respond_to(:select).with(1).argument }
 

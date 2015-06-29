@@ -27,13 +27,13 @@ class Game
 
   def win? player
     # TODO refactor opportunity here - christ knows how though
-    player.select == 'rock' && computer_choice == 'scissors' ||
-    player.select == 'scissors' && computer_choice == 'paper' ||
-    player.select == 'paper' && computer_choice == 'rock'
+    player.select == 'rock' && self.computer_choice == 'scissors' ||
+    player.select == 'scissors' && self.computer_choice == 'paper' ||
+    player.select == 'paper' && self.computer_choice == 'rock'
   end
 
   def draw? player
-    player.select == computer_choice
+    player.select == self.computer_choice
   end
 
 end
