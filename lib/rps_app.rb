@@ -12,22 +12,17 @@ class RSP < Sinatra::Base
     erb :index
   end
 
-  get '/start' do
-    erb :start
-  end
 
-  post '/start' do
+  get '/start' do
     @name = params[:name]
     session[:name] = @name
-    if @name == ""
-      redirect "/error"
-    end
+    redirect "/error" if @name == ""
     erb :start
   end
 
   get '/error' do
-    # @name = params[:name]
-    # redirect "/error" if @name == ""
+    @name = params[:name]
+    redirect "/error" if @name == ""
     erb :error
   end
 
