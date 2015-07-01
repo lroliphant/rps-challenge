@@ -43,7 +43,7 @@ feature 'Playing game' do
    $game = nil
   end
 
-  scenario 'can select rock button' do
+  scenario 'can choose rock button' do
     visit '/new_game'
     allow($game).to receive(:computer_choice).and_return "scissors"
     click_button('rock')
@@ -51,14 +51,14 @@ feature 'Playing game' do
   end
 
 
-  # scenario 'I can select checkbox paper' do
+  # scenario 'I can choose checkbox paper' do
   #   visit 'new_game'
   #   choose('Paper')
   #   click_on('Enter')
   #   expect(extract_results(@name)['option']).to eq("paper")
   # end
   #
-  # scenario 'I can select checkbox scissors' do
+  # scenario 'I can choose checkbox scissors' do
   #   visit 'new_game'
   #   choose('Scissors')
   #   click_on('Enter')

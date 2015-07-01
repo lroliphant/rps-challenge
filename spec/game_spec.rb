@@ -4,7 +4,7 @@ describe Game do
 
   # let(:player) { double :player }
   subject(:game) { Game.new player }
-  let(:player) { double :player, select: '' }
+  let(:player) { double :player, choose: '' }
 
   # just testing the stubbing method - pointless test?
   describe '#computer_choice' do
@@ -17,11 +17,11 @@ describe Game do
   describe '#result' do
 
     # it 'raises error if none of the 3 options are selected' do
-    #   player = double :player, select: ""
+    #   player = double :player, choice: ""
     #   expect { subject.result player }.to raise_error 'Please choose one of the options: rock, scissors or paper'
     # end
 
-    let(:player) { double :player, select: 'rock' }
+    let(:player) { double :player, choose: 'rock' }
 
     it 'allows player to win if he plays rock and computer plays scissors' do
       allow(game).to receive(:computer_choice).and_return "scissors"

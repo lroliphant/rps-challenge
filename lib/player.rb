@@ -1,27 +1,26 @@
 class Player
 
-  # attr_accessor :selected
-  # attr_reader :selection
-  #
-  # def initialize
-  #   @selection = ["rock", "paper", "scissors" ]
-  #   @selected = ""
-  # end
+  attr_accessor :chosen
+  attr_reader :selection
 
-  def select(choice)
-    # @selected = ""
-    # case choice
-    # when "rock"
-    #   self.selected = "rock"
-    # when "paper"
-    #   self.selected = "paper"
-    # when "scissors"
-    #   self.selected = "scissors"
-    # else
-    #   raise "You have not made a valid selection"
-    # end
-    #   self.selected
-    choice
+  def initialize
+    @selection = ["rock", "paper", "scissors" ]
+    @chosen = ""
+  end
+
+  def choose(choice)
+    @chosen = ""
+    case choice
+    when "rock"
+      self.chosen = "rock"
+    when "paper"
+      self.chosen = "paper"
+    when "scissors"
+      self.chosen = "scissors"
+    else
+      raise "You have not made a valid selection"
+    end
+      self.chosen
   end
 
 end

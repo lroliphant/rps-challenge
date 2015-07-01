@@ -36,19 +36,34 @@ class RSP < Sinatra::Base
     $game = Game.new player
     choice = params[:choice].to_s
     random_choice = $game.computer_choice
-    # @result = $game.result player.select(@player_choice)
     begin
       if choice
-        @result = $game.result(player.select(choice))
+        @result = $game.result(player.choose(choice))
       else
-        # erb :new_game
         @error = 'You have not made a valid selection'
       end
     rescue RuntimeError => @error
-      # redirect '/error'
     end
-
   end
+
+  # post '/new_game' do
+  #   player = Player.new
+  #   $game = Game.new player
+  #   choice = params[:choice].to_s
+  #   random_choice = $game.computer_choice
+  #   # @result = $game.result player.select(@player_choice)
+  #   begin
+  #     if choice
+  #       @result = $game.result(player.choose(choice))
+  #     else
+  #       # erb :new_game
+  #       @error = 'You have not made a valid selection'
+  #     end
+  #   rescue RuntimeError => @error
+  #     # redirect '/error'
+  #   end
+  #
+  # end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
